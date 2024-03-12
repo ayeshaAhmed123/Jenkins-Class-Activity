@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Installing Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'python install -r requirements.txt'
                 echo 'Dependencies Installed Successfully!'
             }
         }
