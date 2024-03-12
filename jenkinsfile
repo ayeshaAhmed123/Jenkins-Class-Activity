@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    
+    stages {
+
+        stage('Cloning Git Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/ayeshaAhmed123/Jenkins-Class-Activity.git'
+            }
+        }
+
+        stage('Installing Dependencies') {
+            steps {
+                bat 'pip3 install -r requirements.txt'
+                echo 'Dependencies Installed Successfully!'
+            }
+        }
+
+        stage('Testing') {
+            steps {
+                bat 'python test.py'
+                echo 'test cases runned successfully!'
+            }
+        }
+
+        stage('Deployment') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'main') {
+                        echo 'Deploying in production mode.'
+                        
+                    } else {
+                        echo 'Deploying in development mode.'
+                        
+                    }
+                }
+            }
+        }
+    }
+}
