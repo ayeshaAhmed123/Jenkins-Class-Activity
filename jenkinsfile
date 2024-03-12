@@ -18,8 +18,8 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                bat 'python test.py'
-                echo 'test cases runned successfully!'
+                bat 'C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python311\\python.exe test.py'
+                echo 'Test cases run successfully!'
             }
         }
         stage('Deployment') {
