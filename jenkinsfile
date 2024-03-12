@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PIP_PATH = "C:\\Users\\Dell\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\pip.exe"
+    }
     stages {
 
         stage('Cloning Git Repository') {
@@ -9,7 +12,7 @@ pipeline {
         }
         stage('Installing Dependencies') {
             steps {
-                bat 'python install -r requirements.txt'
+                bat "${env.PIP_PATH} install -r requirements.txt"
                 echo 'Dependencies Installed Successfully!'
             }
         }
